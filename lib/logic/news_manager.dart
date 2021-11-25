@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod_demo/api_key.dart';
+import 'api_key.dart';
 import 'news_resposne_model.dart';
 
 class NewsManager{
