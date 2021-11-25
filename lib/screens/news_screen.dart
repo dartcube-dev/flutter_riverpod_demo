@@ -10,26 +10,24 @@ class NewsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef widgetRef) {
-
     final refreshedValue = widgetRef.watch(refreshProvider);
-    final newsResponseAsyncValue = widgetRef.watch(newsResponseProvider(refreshedValue.url));
+    final newsResponseAsyncValue =
+        widgetRef.watch(newsResponseProvider(refreshedValue.url));
 
-    return newsResponseAsyncValue.map(data: (_){
-      return MaterialApp(
-        home: Scaffold(
-          body: RefreshIndicator(
-            onRefresh: () {
-              refreshedValue.refresh();
-              return Future.value();
-            },
-            child: NewsWidget(newsResponse: _.value),
-          ),
-        ),
-      );
-    }, error: (_){
-      return const NewsErrorWidget();
-    }, loading: (_){
-      return const LoadingWidget();
-    });
+    return Scaffold(
+      body: newsResponseAsyncValue.map(data: (_) {
+        return RefreshIndicator(
+          onRefresh: () {
+            refreshedValue.refresh();
+            return Future.value();
+          },
+          child: NewsWidget(newsResponse: _.value),
+        );
+      }, error: (_) {
+        return const NewsErrorWidget();
+      }, loading: (_) {
+        return const LoadingWidget();
+      }),
+    );
   }
 }
