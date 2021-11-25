@@ -15,6 +15,7 @@ class NewsScreen extends ConsumerWidget {
         widgetRef.watch(newsResponseProvider(refreshedValue.url));
 
     return Scaffold(
+      appBar: AppBar(title: Text(refreshedValue.url),),
       body: newsResponseAsyncValue.map(data: (_) {
         return RefreshIndicator(
           onRefresh: () {
