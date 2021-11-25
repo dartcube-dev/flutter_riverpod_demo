@@ -6,6 +6,14 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoActivityIndicator();
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const[
+          CupertinoActivityIndicator(),
+          Text('Getting content')
+        ],
+      ),
+    );
   }
 }

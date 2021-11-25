@@ -7,7 +7,7 @@ class NewsCategoryManager extends ChangeNotifier{
 
   void refresh(){
     if(_value==4){
-      _value--;
+      _value=0;
     }else{
       _value++;
     }
